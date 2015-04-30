@@ -155,7 +155,7 @@ int main(int argc, char** argv) {
     while (inputFile >> inputKey)
     {
     	inputValue++;
-        assert(inputValue < numberofnodes);
+        assert(inputValue <= numberofnodes);
        	keys[inputValue] = inputKey;
         insertNode(inputKey, inputValue);
         
