@@ -87,7 +87,7 @@ void deleteNode(int nodeKey){
             }
             update[i]->forward[i] = auxNode->forward[i];
         }
-        free(auxNode);
+        delete auxNode;
         
         while (list->Maxlevel > 1 && list->header->forward[list->Maxlevel] == NULL ) {
            list->Maxlevel--;
@@ -155,6 +155,7 @@ int main(int argc, char** argv) {
     while (inputFile >> inputKey)
     {
     	inputValue++;
+        assert(inputValue < numberofnodes);
        	keys[inputValue] = inputKey;
         insertNode(inputKey, inputValue);
         
@@ -185,7 +186,7 @@ int main(int argc, char** argv) {
     while(auxNode != list->tail){
         node * freeNode = auxNode;    
         auxNode = auxNode->forward[1];
-        free(freeNode);
+        delete freeNode;
     }
     delete list->tail;
     delete list->header;
